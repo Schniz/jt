@@ -1,0 +1,27 @@
+#!/bin/bash
+
+TICKET_FILE=$HOME/.current_wip_jira_ticket
+
+function read_jt() {
+  if [ -f $TICKET_FILE ]; then
+    cat $TICKET_FILE
+  else
+    echo "no file!"
+  fi
+}
+
+function set_jt() {
+  echo -n $1 > $TICKET_FILE
+}
+
+function jt() {
+  if [ $# -eq 0 ]; then
+    read_jt
+  else
+    set_jt $1
+    REDUCED_NAME=${TICKET_FILE/$HOME/"~"}
+    echo "$REDUCED_NAME: $1 was stored"
+  fi
+}
+
+jt $*
