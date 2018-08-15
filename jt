@@ -1,4 +1,5 @@
 #!/bin/bash
+#https://github.com/Schniz/jt
 
 TICKET_FILE=$HOME/.current_wip_jira_ticket
 
